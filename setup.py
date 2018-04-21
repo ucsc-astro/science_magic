@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name="science_magic",
@@ -6,10 +6,9 @@ setup(
     description="Import science!",
     author="Asher Wasserman",
     author_email="adwasser@ucsc.edu",
+    url="https://github.com/adwasser/science_magic",
     license="MIT",
-    packages=["science_magic"],
+    packages=find_packages(exclude=[]),
     install_requires=[
-        "numpy", "pandas", "astropy", "matplotlib", "seaborn"
-    ],
-    include_package_data=True)
-
+        "numpy", "pandas", "astropy", "matplotlib", "seaborn", "ipython"
+    ])
