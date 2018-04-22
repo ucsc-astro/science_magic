@@ -39,7 +39,7 @@ import seaborn as sns"""
             new_rc = {}
         else:
             new_rc = line
-        s = """set_dict = dict(context='poster', style='ticks', font_scale=1.5, 
+        s = """set_dict = dict(context='poster', style='ticks', font_scale=1.0, 
                                color_codes=True, palette='deep')
 rc = {{'savefig.bbox': 'tight',
       'figure.figsize': (9, 6),
