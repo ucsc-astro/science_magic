@@ -9,6 +9,7 @@ setup(
     url="https://github.com/adwasser/science_magic",
     license="MIT",
     packages=find_packages(exclude=[]),
+    include_package_data=True,
     install_requires=[
         "numpy", "pandas", "astropy", "matplotlib", "seaborn", "ipython"
     ])

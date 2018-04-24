@@ -1,5 +1,6 @@
+# from pkg_resources import resource_string
+import os, inspect
 from IPython.core.magic import (Magics, magics_class, line_magic)
-
 
 @magics_class
 class ScienceMagic(Magics):
@@ -7,7 +8,9 @@ class ScienceMagic(Magics):
     @line_magic
     def science(self, line):
         """Import statements"""
-        s = """import numpy as np\nimport pandas as pd"""
+        from . import science_imports
+        with open(inspect.getfile(science_imports)) as f:
+            s = f.read()
         ns = self.shell.user_ns
         print(s)
         exec(s, ns)
@@ -17,20 +20,19 @@ class ScienceMagic(Magics):
     @line_magic
     def astro(self, line):
         """Import statements"""
-        s = """from astropy.coordinates import SkyCoord
-from astropy.table import Table
-from astropy.io import fits
-from astropy import units as u
-from astropy import constants as c"""
+        from . import astro_imports
+        with open(inspect.getfile(astro_imports)) as f:
+            s = f.read()
         ns = self.shell.user_ns
         print(s)
         exec(s, ns)
 
     @line_magic
     def plotting(self, line):
-        s = """import matplotlib as mpl
-import matplotlib.pyplot as plt
-import seaborn as sns"""
+        """Import statements"""
+        from . import plotting_imports
+        with open(inspect.getfile(plotting_imports)) as f:
+            s = f.read()
         ns = self.shell.user_ns
         print(s)
         exec(s, ns)
@@ -39,21 +41,11 @@ import seaborn as sns"""
             new_rc = {}
         else:
             new_rc = line
-        s = """set_dict = dict(context='poster', style='ticks', font_scale=1.0, 
-                               color_codes=True, palette='deep')
-rc = {{'savefig.bbox': 'tight',
-      'figure.figsize': (9, 6),
-      'text.usetex': True,
-      'image.origin': 'lower',
-      'image.interpolation': 'none'}}
-rc.update({})
-print('matplotlib settings:')
-for k, v in rc.items():
-    print('\t{{}} = {{}}'.format(k, v))
-print('seaborn settings:')
-for k, v in set_dict.items():
-    print('\t{{}} = {{}}'.format(k, v))
-sns.set(rc=rc, **set_dict)
-""".format(new_rc.__str__())
+        install_dir = os.path.split(inspect.getfile(plotting_imports))[0]
+        filename = install_dir + '/plotting_settings.txt'
+        with open(filename) as f:
+            s = f.read()
+        s = s.format(new_rc.__str__())
+
         ns = self.shell.user_ns
         exec(s, ns)

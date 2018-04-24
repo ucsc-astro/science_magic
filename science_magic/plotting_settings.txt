@@ -1,0 +1,16 @@
+set_dict = dict(context='poster', style='ticks', font_scale=1,
+                color_codes=True, palette='deep')
+rc = {{'savefig.bbox': 'tight',
+      'figure.figsize': (9, 6),
+      'text.usetex': True,
+      'image.origin': 'lower',
+      'image.interpolation': 'none'}}
+rc.update({})
+sns.set(rc=rc, **set_dict)
+
+print('matplotlib settings:')
+for k, v in rc.items():
+    print('\t{{}} = {{}}'.format(k, v))
+print('seaborn settings:')
+for k, v in set_dict.items():
+    print('\t{{}} = {{}}'.format(k, v))
