@@ -7,7 +7,7 @@ It's like `%pylab` but with less littering of your namespace.
 ```shell
 git clone git@github.com:adwasser/science_magic.git
 cd science_magic
-python setup.py install
+pip install .
 ```
 with the last line prepended by sudo for most python installations.
 
