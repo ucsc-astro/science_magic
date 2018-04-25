@@ -5,7 +5,7 @@ It's like `%pylab` but with less littering of your namespace.
 
 ## Install
 ```shell
-git clone git@github.com:adwasser/science_magic.git
+git clone git@github.com:ucsc-astro/science_magic.git
 cd science_magic
 pip install .
 ```
