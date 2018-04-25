@@ -6,7 +6,7 @@ setup(
     description="Import science!",
     author="Asher Wasserman",
     author_email="adwasser@ucsc.edu",
-    url="https://github.com/adwasser/science_magic",
+    url="https://github.com/ucsc-astro/science_magic",
     license="MIT",
     packages=find_packages(exclude=[]),
     include_package_data=True,
